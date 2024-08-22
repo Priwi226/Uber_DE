@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testovacia stránka</title>
+  <style>
+    /* Príklad štýlov pre MUI tabuľku */
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    .table th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Číslo</th>
+        <th>Cena</th>
+        <th>Adresa vyzdvihnutia</th>
+        <th>Adresa vyloženia</th>
+        <th>Meno zákazníka</th>
+        <th>Šofér</th>
+        <th>Dátum prijatia</th>
+        <th>Čas prijatia</th>
+      </tr>
+    </thead>
+    <tbody class="MuiTableBody-root">
+      <tr>
+        <td>1</td>
+        <td>11,50€</td>
+        <td>Salierstraße 20, 81543 München, Germany </td>
+        <td>Kreillerstraße 160A, 81825 München, Germany</td>
+        <td>Zákazník 1</td>
+        <td>Šofér 1</td>
+        <td>2023-06-26</td>
+        <td>10:00:00</td>
+        <td><button class="Potvrdenie">Potvrdenie</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>15,04 €</td>
+        <td>Georg-Böhmer-Straße 3, 81245 München, Germany</td>
+        <td>Haberlandstraße 27, 81241 München, Germany</td>
+        <td>Zákazník 2</td>
+        <td>Šofér 2</td>
+        <td>2023-06-26</td>
+        <td>11:00:00</td>
+        <td><button class="Potvrdenie">Potvrdenie</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>28,40 €</td>
+        <td>Adresa 5</td>
+        <td>Adresa 6</td>
+        <td>Zákazník 3</td>
+        <td>Šofér 3</td>
+        <td>2023-06-26</td>
+        <td>12:00:00</td>
+        <td><button class="Potvrdenie">Potvrdenie</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>25,75</td>
+        <td>Landwehrstraße 46, 80336 München, Germany</td>
+        <td>Landshamer Str. 11, 81929 München, Germany</td>
+        <td>Zákazník 4</td>
+        <td>Šofér 4</td>
+        <td>2023-06-26</td>
+        <td>13:00:00</td>
+        <td><button class="Potvrdenie">Potvrdenie</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function findButtonByRowText(tableBody, desiredText) {
+      var rows = tableBody.getElementsByClassName('MuiTableRow-root');
+      for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        for (var j = 0; j < cells.length; j++) {
+          if (cells[j].textContent.trim() === desiredText) {
+            var button = rows[i].getElementsByClassName('Potvrdenie')[0];
+            return button;
+          }
+        }
+      }
+      return null;
+    }
+
+    var tableBody = document.getElementsByClassName('MuiTableBody-root')[0];
+    var desiredText = 'Zákazník 2';
+    var button = findButtonByRowText(tableBody, desiredText);
+    console.log(button);
+  </script>
+</body>
+</html>
+
